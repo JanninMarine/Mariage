@@ -1,5 +1,16 @@
 
+/* =====================================================
+   MARIAGE MARINE & THEODORE
+   Identité : champêtre chic, romantique et intemporelle
+   ===================================================== */
+
+
+/* -----------------------------------------------------
+   1. VARIABLES ET BASE
+   ----------------------------------------------------- */
+
 :root {
+  /* Palette */
   --ivory: #f8f5ee;
   --paper: #fffdf8;
   --sage: #7c8a73;
@@ -9,55 +20,132 @@
   --ink: #34372f;
   --muted: #77786e;
   --line: #ded9cc;
+
+  /* Typographies */
+  --font-script: "sloop-script-two", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Montserrat", Arial, sans-serif;
+
+  /* Mise en page */
+  --content-width: 1050px;
+  --text-width: 680px;
+  --section-space: 105px;
+
+  /* Décoration */
+  --shadow-soft: 0 5px 24px rgba(52, 55, 47, 0.055);
+  --shadow-hover: 0 13px 32px rgba(52, 55, 47, 0.11);
+  --transition: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 90px;
 }
 
 body {
   margin: 0;
+  width: 100%;
   color: var(--ink);
   background: var(--paper);
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.85;
+  overflow-x: clip;
 }
 
 .main-container {
   width: 100%;
   max-width: none;
-  padding: 0;
+  margin: 0;
+  padding: 0 !important;
 }
 
-h1, h2, h3, .signature,
-.site-footer > p:first-of-type {
-  font-family: "Cormorant Garamond", Georgia, serif;
+
+/* -----------------------------------------------------
+   2. TYPOGRAPHIE
+   ----------------------------------------------------- */
+
+/* Titres classiques */
+
+h2,
+h3,
+.signature {
+  font-family: var(--font-display);
   font-weight: 500;
 }
 
 h1 {
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  line-height: 0.95;
-  margin: 0.15em 0;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1.1;
+  margin: 0.1em 0;
 }
 
 h2 {
-  font-size: clamp(2.3rem, 4vw, 3.5rem);
-  line-height: 1.05;
-  margin: 0 0 1rem;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 1.08;
+  margin: 0 0 22px;
 }
 
 h3 {
-  font-size: 1.8rem;
-  line-height: 1.1;
-  margin: 0.3rem 0 0.6rem;
+  font-size: 1.85rem;
+  line-height: 1.15;
+  margin: 0.3rem 0 0.7rem;
+}
+
+/* Sloop pour les noms de lieux */
+
+.location-script,
+.place-copy h3 {
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Petites introductions */
+
+.eyebrow {
+  color: var(--sage-dark);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.23em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+.section-lead {
+  max-width: var(--text-width);
+  margin: 0 auto 30px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.signature {
+  color: var(--rose);
+  font-family: var(--font-script);
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin-top: 28px;
+}
+
+p {
+  margin-top: 0;
 }
 
 a {
   color: var(--sage-dark);
+  transition: color var(--transition);
 }
 
 a:hover {
@@ -65,81 +153,150 @@ a:hover {
   text-decoration: none;
 }
 
-/* HERO */
+
+/* -----------------------------------------------------
+   3. LARGEUR PLEINE PAGE
+   ----------------------------------------------------- */
+
+/*
+   Les sections et les fonds dépassent du conteneur
+   R Markdown pour occuper toute la largeur écran.
+*/
+
+.hero,
+.site-nav,
+.section,
+.garden-banner,
+.site-footer {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.section {
+  position: relative;
+  padding: var(--section-space) 24px;
+  text-align: center;
+}
+
+/* Largeur de lecture des contenus */
+
+.section > h2,
+.section > p:not(.eyebrow),
+.section-intro > p:not(.eyebrow) {
+  max-width: var(--text-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-intro {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.section-intro p:not(.eyebrow) {
+  max-width: var(--text-width);
+  margin: 18px auto;
+}
+
+
+/* -----------------------------------------------------
+   4. ACCUEIL / HERO
+   ----------------------------------------------------- */
 
 .hero {
   display: flex;
-  min-height: 660px;
+  min-height: 700px;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding: 80px 24px;
+  padding: 90px 24px;
+
   background-color: var(--ivory);
   background-image:
     linear-gradient(
-      rgba(248, 245, 238, 0.70),
-      rgba(248, 245, 238, 0.80)
+      rgba(248, 245, 238, 0.63),
+      rgba(248, 245, 238, 0.76)
     ),
     url("../../images/photo-nous.jpg");
+
   background-position: center, center;
-  background-size: cover, auto 100%;
+  background-size: cover, cover;
   background-repeat: no-repeat;
 }
 
 .hero-content {
-  max-width: 760px;
+  width: 100%;
+  max-width: 900px;
   position: relative;
   z-index: 2;
 }
 
-.eyebrow {
-  color: var(--sage-dark);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.23em;
-  line-height: 1.6;
-  text-transform: uppercase;
-}
-
 .hero .eyebrow {
   letter-spacing: 0.28em;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  color: var(--sage-dark);
+  font-size: clamp(5rem, 11vw, 9rem);
+  margin: 12px 0 20px;
 }
 
 .hero-date {
   color: var(--sage-dark);
-  letter-spacing: 0.15em;
   font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
 }
 
 .hero-intro {
   max-width: 430px;
-  margin: 25px auto 32px;
+  margin: 25px auto 35px;
+  font-size: 0.95rem;
 }
 
 .ornament {
   color: var(--gold);
-  font-size: 1.4rem;
-  margin: 20px 0;
+  font-size: 1.5rem;
+  margin: 22px 0;
 }
 
-/* BOUTONS */
+
+/* -----------------------------------------------------
+   5. BOUTONS
+   ----------------------------------------------------- */
 
 .button {
   display: inline-block;
-  padding: 12px 24px;
-  border: 1px solid;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  padding: 14px 30px;
+  border: 1px solid var(--sage-dark);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-decoration: none !important;
   text-transform: uppercase;
-  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.button:hover {
+  transform: translateY(-2px);
 }
 
 .button-light {
-  border-color: var(--sage-dark);
+  background: rgba(255, 253, 248, 0.4);
   color: var(--sage-dark);
 }
 
@@ -150,7 +307,6 @@ a:hover {
 
 .button-dark {
   background: var(--sage-dark);
-  border-color: var(--sage-dark);
   color: white;
 }
 
@@ -160,75 +316,107 @@ a:hover {
   color: white;
 }
 
-/* NAVIGATION */
+
+/* -----------------------------------------------------
+   6. NAVIGATION
+   ----------------------------------------------------- */
 
 .site-nav {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 10px 30px;
-  padding: 17px 15px;
-  background: rgba(255, 253, 248, 0.97);
+  gap: 12px 34px;
+  padding: 18px 20px;
+
+  background: rgba(255, 253, 248, 0.96);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 3px 14px rgba(52, 55, 47, 0.04);
+  backdrop-filter: blur(10px);
 }
 
 .site-nav a {
+  color: var(--sage-dark);
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
+  transition: color var(--transition);
 }
 
-/* SECTIONS */
-
-.section {
-  padding: 95px 24px;
-  text-align: center;
+.site-nav a:hover {
+  color: var(--rose);
 }
 
-.section > p,
-.section > h2 {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+/* -----------------------------------------------------
+   7. ALTERNANCE DES SECTIONS
+   ----------------------------------------------------- */
 
 .section-intro {
-  max-width: 850px;
-  margin: auto;
+  background: var(--paper);
+  padding-top: 115px;
+  padding-bottom: 115px;
 }
 
-.section-intro p:not(.eyebrow) {
-  max-width: 650px;
-  margin: 18px auto;
+#programme {
+  background: var(--ivory);
 }
 
-.signature {
-  color: var(--rose);
-  font-size: 2.5rem;
-  font-style: italic;
-  margin-top: 28px;
+#dimanche {
+  background: var(--paper);
+}
+
+.dress-code-section {
+  background: #eef0e8;
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
+#lieux {
+  background: var(--paper);
+}
+
+#pratique {
+  background: var(--ivory);
+  padding-top: 105px;
+  padding-bottom: 110px;
+}
+
+.gift-section {
+  background: #eef0e8;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.rsvp-section {
+  background: #f1e8e3;
+  padding-top: 105px;
+  padding-bottom: 110px;
 }
 
 .section-tinted {
   background: var(--ivory);
 }
 
-.section-lead {
-  color: var(--muted);
-  font-size: 0.9rem;
+.section h2 {
+  color: var(--ink);
+  margin-bottom: 24px;
 }
 
-/* PROGRAMME */
+
+/* -----------------------------------------------------
+   8. PROGRAMME / TIMELINE
+   ----------------------------------------------------- */
 
 .timeline {
   max-width: 700px;
-  margin: 48px auto 0;
+  margin: 55px auto 0;
   text-align: left;
 }
 
@@ -237,7 +425,7 @@ a:hover {
   grid-template-columns: 105px 24px 1fr;
   gap: 20px;
   position: relative;
-  min-height: 105px;
+  min-height: 115px;
 }
 
 .timeline-item:not(:last-child)::after {
@@ -251,17 +439,18 @@ a:hover {
 }
 
 .timeline-time {
-  text-align: right;
   color: var(--sage-dark);
   font-size: 0.82rem;
+  font-weight: 600;
+  text-align: right;
   padding-top: 2px;
 }
 
 .timeline-marker {
   position: relative;
   z-index: 1;
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   margin: 8px auto 0;
   border: 1px solid var(--gold);
   border-radius: 50%;
@@ -269,68 +458,114 @@ a:hover {
 }
 
 .timeline-detail h3 {
-  font-size: 1.65rem;
+  color: var(--sage-dark);
+  font-size: 1.8rem;
+  margin-bottom: 8px;
 }
 
 .timeline-detail p {
-  margin-top: 0;
   color: var(--muted);
   font-size: 0.88rem;
+  margin: 0;
 }
 
-/* LIEUX */
+
+/* -----------------------------------------------------
+   9. LIEUX
+   ----------------------------------------------------- */
 
 .place-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
-  max-width: 1000px;
-  margin: 42px auto 0;
+  gap: 35px;
+  max-width: var(--content-width);
+  margin: 55px auto 0;
   text-align: left;
 }
 
 .place-card {
-  background: var(--ivory);
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.place-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
 }
 
 .place-image {
   display: block;
   width: 100%;
-  height: 290px;
+  height: 320px;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.place-card:hover .place-image {
+  transform: scale(1.025);
 }
 
 .place-copy {
-  padding: 28px 30px 32px;
+  padding: 30px 32px 35px;
+}
+
+.place-copy .eyebrow {
+  margin-bottom: 10px;
+}
+
+.place-copy h3 {
+  color: var(--sage-dark);
+  margin: 0 0 12px;
 }
 
 .place-copy p:not(.eyebrow) {
   color: var(--muted);
   font-size: 0.88rem;
+  line-height: 1.8;
 }
 
 .text-link {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  display: inline-block;
+  margin-top: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--gold);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
   text-transform: uppercase;
+  transition: color var(--transition), border-color var(--transition);
 }
 
-/* BANDEAU AQUARELLE */
+.text-link:hover {
+  color: var(--rose);
+  border-color: var(--rose);
+}
+
+
+/* -----------------------------------------------------
+   10. BANDEAU AQUARELLE / JARDIN
+   ----------------------------------------------------- */
 
 .garden-banner {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr) minmax(260px, 1fr);
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 50px;
-  padding: 65px max(24px, calc((100% - 950px) / 2));
-  background: #eef0e8;
+  gap: 65px;
+  min-height: 350px;
+  padding: 75px max(24px, calc((100vw - 1050px) / 2));
+  background: #e9ede4;
 }
 
 .garden-art {
+  display: block;
   width: 100%;
-  max-height: 300px;
+  max-height: 340px;
   object-fit: contain;
 }
 
@@ -340,38 +575,105 @@ a:hover {
 
 .garden-banner p:not(.eyebrow) {
   max-width: 450px;
+  color: var(--muted);
 }
 
-/* FAQ */
+
+/* -----------------------------------------------------
+   11. DRESS CODE
+   ----------------------------------------------------- */
+
+.dress-code-image {
+  display: block;
+  width: 100%;
+  max-width: 780px;
+  max-height: 540px;
+  object-fit: contain;
+  margin: 45px auto;
+}
+
+.dress-code-text {
+  max-width: 680px;
+  margin: 30px auto 15px !important;
+  line-height: 2;
+}
+
+.dress-code-note {
+  color: var(--sage-dark);
+  font-size: 0.82rem;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+
+/* -----------------------------------------------------
+   12. DIMANCHE
+   ----------------------------------------------------- */
+
+.sunday-location {
+  max-width: 700px;
+  margin: 40px auto 0;
+  padding: 30px;
+  background: #eef0e8;
+  text-align: center;
+}
+
+.sunday-location p {
+  font-size: 0.9rem;
+}
+
+
+/* -----------------------------------------------------
+   13. INFORMATIONS PRATIQUES / FAQ
+   ----------------------------------------------------- */
 
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 34px 45px;
-  max-width: 900px;
-  margin: 45px auto 0;
+  gap: 40px 55px;
+  max-width: 1000px;
+  margin: 60px auto 0;
   text-align: left;
 }
 
 .faq-item {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
+  padding: 25px 28px;
+  border-top: 2px solid var(--sage);
+  background: rgba(255, 253, 248, 0.72);
+  transition: box-shadow var(--transition);
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-soft);
 }
 
 .faq-item h3 {
-  font-size: 1.65rem;
+  color: var(--sage-dark);
+  font-size: 1.75rem;
+  margin-bottom: 15px;
 }
 
 .faq-item p {
   color: var(--muted);
   font-size: 0.88rem;
+  line-height: 1.85;
 }
 
-/* RSVP */
 
-.rsvp-section {
-  background: #f1e8e3;
+/* -----------------------------------------------------
+   14. LISTE DE MARIAGE
+   ----------------------------------------------------- */
+
+.gift-section > p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 25px auto 35px;
+  line-height: 2;
 }
+
+
+/* -----------------------------------------------------
+   15. RSVP
+   ----------------------------------------------------- */
 
 .rsvp-section > p:not(.eyebrow) {
   max-width: 560px;
@@ -384,17 +686,26 @@ a:hover {
   font-size: 0.78rem;
 }
 
-/* PIED DE PAGE */
+
+/* -----------------------------------------------------
+   16. PIED DE PAGE
+   ----------------------------------------------------- */
 
 .site-footer {
   text-align: center;
-  padding: 38px 20px 45px;
+  padding: 55px 20px;
   background: var(--paper);
 }
 
 .site-footer > p:first-of-type {
-  font-size: 2.2rem;
+  font-family: var(--font-script);
+  font-size: 3.2rem;
+  color: var(--sage-dark);
   margin: 12px 0 0;
+}
+
+.site-footer .ornament {
+  margin-bottom: 15px;
 }
 
 .footer-date {
@@ -404,25 +715,66 @@ a:hover {
   text-transform: uppercase;
 }
 
-/* MOBILE */
+
+/* -----------------------------------------------------
+   17. RESPONSIVE / TABLETTES ET MOBILES
+   ----------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :root {
+    --section-space: 85px;
+  }
+
+  .garden-banner {
+    gap: 35px;
+  }
+
+  .place-image {
+    height: 270px;
+  }
+}
 
 @media (max-width: 700px) {
+  :root {
+    --section-space: 72px;
+  }
+
   .hero {
-    min-height: 540px;
+    min-height: 570px;
     padding: 65px 20px;
+    background-position: center, center;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.5rem, 16vw, 6rem);
+  }
+
+  .hero-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
   }
 
   .site-nav {
-    gap: 9px 16px;
-    padding: 13px 10px;
+    position: relative;
+    gap: 10px 16px;
+    padding: 14px 12px;
   }
 
   .site-nav a {
     font-size: 0.58rem;
   }
 
-  .section {
-    padding: 68px 22px;
+  .section,
+  .section-intro,
+  .dress-code-section,
+  #pratique,
+  .gift-section,
+  .rsvp-section {
+    padding: 75px 22px;
+  }
+
+  .section h2 {
+    font-size: 2.7rem;
   }
 
   .place-grid,
@@ -432,25 +784,60 @@ a:hover {
   }
 
   .place-grid {
-    gap: 22px;
+    gap: 25px;
+    margin-top: 38px;
   }
 
   .place-image {
-    height: 230px;
+    height: 250px;
+  }
+
+  .place-copy {
+    padding: 25px 22px 30px;
+  }
+
+  .place-copy h3 {
+    font-size: 2.3rem;
   }
 
   .garden-banner {
-    gap: 15px;
-    padding: 40px 24px;
+    padding: 45px 25px;
+    gap: 25px;
+    text-align: center;
   }
 
   .garden-art {
-    max-height: 220px;
+    max-height: 240px;
+  }
+
+  .garden-banner h2,
+  .garden-banner p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .faq-grid {
+    gap: 25px;
+    margin-top: 38px;
+  }
+
+  .faq-item {
+    padding: 22px 20px;
+  }
+
+  .dress-code-image {
+    max-height: 380px;
+    margin: 30px auto;
+  }
+
+  .timeline {
+    margin-top: 40px;
   }
 
   .timeline-item {
-    grid-template-columns: 76px 18px 1fr;
+    grid-template-columns: 76px 18px minmax(0, 1fr);
     gap: 12px;
+    min-height: 105px;
   }
 
   .timeline-item:not(:last-child)::after {
@@ -462,6 +849,40 @@ a:hover {
   }
 
   .timeline-detail h3 {
-    font-size: 1.45rem;
+    font-size: 1.5rem;
+  }
+
+  .sunday-location {
+    padding: 22px 16px;
+  }
+
+  .signature {
+    font-size: 2.8rem;
   }
 }
+
+
+/* -----------------------------------------------------
+   18. ACCESSIBILITE
+   ----------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
